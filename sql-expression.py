@@ -1,3 +1,4 @@
+# engine = create_engine("mysql+pymysql://user:pw@host/db", pool_pre_ping=True)
 from sqlalchemy import (
     create_engine, Table, Column, Float, ForeignKey, Integer, String, MetaData
 )
@@ -14,7 +15,7 @@ artist_table = Table(
     Column("Name", String)
 )
 
-# create variable for "Album" table
+# create a variable for "Album" table
 album_table = Table(
     "Album", meta,
     Column("AlbumId", Integer, primary_key=True),
@@ -40,7 +41,7 @@ track_table = Table(
 with db.connect() as connection:
 
     # Query 1 - select all records from the "Artist" table
-    # select_query = artist_table.select()
+    select_query = artist_table.select()
 
     # Query 2 - select only the "Name" column from the "Artist" table
     # select_query = artist_table.select().with_only_columns([artist_table.c.Name])
@@ -55,7 +56,7 @@ with db.connect() as connection:
     # select_query = album_table.select().where(album_table.c.ArtistId == 51)
 
     # Query 6 - select all tracks where the composer is 'Queen' from the "Track" table
-    select_query = track_table.select().where(track_table.c.Composer == "Queen")
+    # select_query = track_table.select().where(track_table.c.Composer == "Queen")
 
     results = connection.execute(select_query)
     for result in results:
