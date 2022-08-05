@@ -1,9 +1,8 @@
-# engine = create_engine("mysql+pymysql://user:pw@host/db", pool_pre_ping=True)
 from sqlalchemy import (
     create_engine, Table, Column, Float, ForeignKey, Integer, String, MetaData
 )
 
-# executing the instructions from localhost "chinook" db
+# executing the instructions from localhost "chinook"
 db = create_engine("postgresql:///chinook")
 
 meta = MetaData(db)
