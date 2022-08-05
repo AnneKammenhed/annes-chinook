@@ -1,16 +1,16 @@
-#import psycopg2
+import psycopg2
 
 
 #connect to chinook-database
-#connection = psycopg2.connect(database="chinook")
+connection = psycopg2.connect(database="chinook")
 
 
 #build a cursor object of the database(same as array in javascript)
-#cursor = connection.cursor()
+cursor = connection.cursor()
 
 
 #Query 1 - select all records from the "Artist" table
-#cursor.execute('SELECT * FROM "Artist"')
+cursor.execute('SELECT * FROM "Artist"')
 
 #Query 2 - select the Name column from the Artist table
 #cursor.execute('SELECT "Name" FROM "Artist"')
@@ -29,15 +29,15 @@
 
 
 #fetch results(multiple)
-#results = cursor.fetchall()
+results = cursor.fetchall()
 
 
 #fetch results(single)
 #results = cursor.fetchone()
 
 #close the connection
-#connection.close()
+connection.close()
 
 #print results
-#for result in results:
-#    print(result)
+for result in results:
+    print(result)
